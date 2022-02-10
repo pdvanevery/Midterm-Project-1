@@ -16,8 +16,8 @@
   body {
     margin: 0;
     font-family: sans-serif;
-    background-color: var(--night-forest);
-    color: var(--pale-sage);
+    background-color: #8d9194;
+    color: #ffe70a;
     text-align: center;
   }
   
@@ -38,11 +38,20 @@
   }
   
   main {
-    background-color: var(--sage);
+    background-color: #14a6d3;
   flex-grow: 4;
   min-height: 60vh;
   }
 
-  .health1 {
-      margin-left: 10px;
-  }
+ .scoreboard {
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     width: 100%;
+
+ } 
+
+ .scoreboard_name, .scoreboard_score {
+     padding: 10px;
+     text-align: center;
+     font-weight: bold;
+ }
