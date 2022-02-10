@@ -1,0 +1,1 @@
+move(player('assets/buggy-filler.jpeg')).to(200, 450)

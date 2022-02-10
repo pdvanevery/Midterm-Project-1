@@ -1,0 +1,44 @@
+* {
+    outline: 1px solid white;
+  }
+  
+  
+  
+  :root {
+    --pale-sage: #BFF4CB;
+    --sage: #84A98C;
+    --dusty-emerald: #52796f;
+    --deep-emerald: #354F52;
+    --night-forest: #2F3E46;
+  }   
+  
+  
+  body {
+    margin: 0;
+    font-family: sans-serif;
+    background-color: var(--night-forest);
+    color: var(--pale-sage);
+    text-align: center;
+  }
+  
+  .container {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  header, footer {
+  flex-grow: 1;
+  }
+  
+  aside {
+    background-color: var(--dusty-emerald);
+  flex-grow: 2;
+  }
+  
+  main {
+    background-color: var(--sage);
+  flex-grow: 4;
+  min-height: 60vh;
+  }
