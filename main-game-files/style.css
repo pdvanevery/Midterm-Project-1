@@ -42,3 +42,7 @@
   flex-grow: 4;
   min-height: 60vh;
   }
+
+  .health1 {
+      margin-left: 10px;
+  }
