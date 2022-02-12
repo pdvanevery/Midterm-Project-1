@@ -13,8 +13,8 @@ const totRounds = 0;
 
 //Variables for moves
 const result;
-const yourHealth = document.getElementById("yourHealth");
-const oppHealth = document.getElementById("oppHealth");
+const yourHealthBar = document.getElementById("yourHealthBar");
+const oppHealthBar = document.getElementById("oppHealthBar");
 const attackButtonL = document.getElementById("attack1");
 const attackButtonM = document.getElementById("attack2");
 const attackButtonH = document.getElementById("attack3");
@@ -130,8 +130,8 @@ function oppMove(id) {
         savedOppMove = "counter";
     };
 
-    result = ("Your move is <span>" + id + "</span> and the computers move is <span>" + savedOppMove + "</span> on round " + totRounds):
-    damageStep(id, savedOppMove):
+    result = ("Your move is <span>" + id + "</span> and the computers move is <span>" + savedOppMove + "</span> on round " + totRounds);
+    damageStep(id, savedOppMove);
     roundResults(result);
 
 }

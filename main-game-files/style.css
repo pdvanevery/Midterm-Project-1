@@ -71,7 +71,7 @@
   transform: translateY(4px);
  }
 
-  #oppHealth {
+  #oppHealthBar {
 	position: absolute;
 	bottom: 635px;
 	right: 150px;
@@ -79,11 +79,19 @@
 	width: 400px;
 	background: limegreen;
 }
-#yourHealth {
+#yourHealthBar {
   position: absolute;
   bottom: 635px;
   left: 150px;
   height: 10px;
   width: 400px;
   background: limegreen;
+}
+
+#announcements {
+	border: black 2px solid
+}
+
+#announcements span {
+	color: white;
 }

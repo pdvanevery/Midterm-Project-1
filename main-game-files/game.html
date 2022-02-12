@@ -19,13 +19,13 @@
 <body>
 <div class="container">
     <header>
-       <!-- <progress id = health1 value = "100" max = "100"></progress>
-        <progress id = health2 value = "100" max = "100"></progress> -->
+       
         <div class = "scoreboard">
             <div class="scoreboard_name scoreboard_name1">Player</div>
             <div class="scoreboard_name scoreboard_name2">Opponent</div>
-            <div class="scoreboard_score" id="yourHealth"></div>
-            <div class="scoreboard_score" id="oppHealth"></div>
+            <div class="scoreboard_score" id="yourHealth"><div id="yourHealthBar"></div></div>
+            <div class="scoreboard_score" id="oppHealth"><div id="oppHealthBar"></div></div>
+            
         </div>
         <button class="button" id="playAgain">Play Again</button>
     </header>
@@ -33,6 +33,8 @@
         <div class="player">
             <img src="./assets/luffy-neutral.png" alt="player">
         </div>
+        
+        <div id="announcements"></div>
 
         <div class="opponent">
             <img src="./assets/luffy-neutral.png" alt="opponent">
