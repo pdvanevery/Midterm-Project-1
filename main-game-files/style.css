@@ -69,3 +69,21 @@
   background-color: #eeff01;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
+ }
+
+  #oppHealth {
+	position: absolute;
+	bottom: 635px;
+	right: 150px;
+	height: 10px;
+	width: 400px;
+	background: limegreen;
+}
+#yourHealth {
+  position: absolute;
+  bottom: 635px;
+  left: 150px;
+  height: 10px;
+  width: 400px;
+  background: limegreen;
+}
