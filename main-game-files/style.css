@@ -76,7 +76,7 @@
 	bottom: 635px;
 	right: 150px;
 	height: 10px;
-	width: 400px;
+	
 	background: limegreen;
 }
 #yourHealthBar {
@@ -84,14 +84,17 @@
   bottom: 635px;
   left: 150px;
   height: 10px;
-  width: 400px;
+  
   background: limegreen;
 }
 
 #announcements {
-	border: black 2px solid
+	border: black 2px solid;
+  color: white;
 }
 
 #announcements span {
 	color: white;
+  
 }
+
