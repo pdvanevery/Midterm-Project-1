@@ -54,84 +54,88 @@ function counter(y, o) {
     let move = Math.floor((Math.random()*6)+1);
     if (y === "attack1") {
         if (move >=6){
-            result = "Opponent's counter was successful! You took 10 damage";
+            // result = "Opponent's counter was successful! You took 10 damage";
             yourHealth -= 10;
             console.log("line 58", yourHealth);
         } 
         else {
-            result = "Opponent's counter failed! You dealt 12 damage!";
+            // result = "Opponent's counter failed! You dealt 12 damage!";
             oppHealth -= 12;
             console.log("line 63", oppHealth);
         } 
     } 
      else if (y === "attack2") {
         if (move >=5){
-            result = "Opponent's counter was successful! You took 15 damage";
+            // result = "Opponent's counter was successful! You took 15 damage";
             yourHealth -= 15;
             console.log("line 70", yourHealth);
         } 
         else {
-            result = "Opponent's counter failed! You dealt 17 damage!";
+            // result = "Opponent's counter failed! You dealt 17 damage!";
             oppHealth -= 17;
             console.log("line 75", oppHealth);
         }
     }
    else if (y === "attack3") {
         if (move >=4){
-            result = "Opponent's counter was successful! You took 22 damage";
+            // result = "Opponent's counter was successful! You took 22 damage";
             yourHealth -= 22;
             console.log("line 82", yourHealth);
         }
         else {
-            result = "Opponent's counter failed! You dealt 25 damage!";
+            // result = "Opponent's counter failed! You dealt 25 damage!";
             oppHealth -= 25;
             console.log("line 87", oppHealth);
         }
     }
-    else if (y === "counter") {
-        if (move >=3){
-            result = "Your counter was successful!";
-            oppHealth -=15;
-            console.log("line 94", oppHealth);
+    // else if (y === "counter") {
+    //     if (move >=3){
+    //         result = "Your counter was successful!";
+    //         oppHealth -=15;
+    //         console.log("line 94", oppHealth);
+    //     }
+    //     else {
+    //         result = "Your counter failed!";
+    //         yourHealth -= 12;
+    //         console.log("line 99", yourHealth);
+    //     }
+    // }
+
+}
+
+function counter2(y, o) {
+    let move = Math.floor((Math.random()*6)+1);
+    if (o === "attack1") {
+        if (move >=6){
+            oppHealth -= 10;
+            console.log("line 111", oppHealth);
+        } 
+        else {
+            yourHealth -= 12;
+            console.log("line 116", yourHealth);
+        } 
+    } 
+     else if (o === "attack2") {
+        if (move >=5){
+            oppHealth -= 15;
+            console.log("line 123", oppHealth);
+        } 
+        else {
+            yourHealth -= 17;
+            console.log("line 128", yourHealth);
+        }
+    }
+   else if (o === "attack3") {
+        if (move >=4){
+            oppHealth -= 22;
+            console.log("line 135", oppHealth);
         }
         else {
-            result = "Your counter failed!";
-            yourHealth -= 12;
-            console.log("line 99", yourHealth);
+            yourHealth -= 25;
+            console.log("line 140", yourHealth);
         }
     }
 
-    // if (move >= 6 && y === "counter") {
-    //     result = "Your counter was succcessful! Opponent took 10 damage";
-    //     oppHealth -= 10;
-    //     console.log("line 60", oppHealth);
-    // } else {
-    //     result = "Your counter was not successful! your were dealth 12 damage!";
-    //     yourHealth -= 12;
-    //     console.log("line 68", yourHealth);
-    // }
-
-       
-    // if (move2 >= 5 && y === "counter") {
-    //     result = "Your counter was succcessful! Opponent took 15 damage";
-    //     oppHealth -= 15;
-    //     console.log("line 77", oppHealth);
-    // } else {
-    //     result = "Your counter was not successful! your were dealth 17 damage!";
-    //     yourHealth -= 17;
-    //     console.log("line 84", yourHealth);
-    // }     
-    
-   
-    // if (move3 >= 4 && y === "counter") {
-    //     result = "Your counter was succcessful! Opponent took 15 damage";
-    //     oppHealth -= 20;
-    //     console.log("line 94", oppHealth);
-    // } else {
-    //     result = "Your counter was not successful! your were dealt 25 damage!";
-    //     yourHealth -= 25;
-    //     console.log("line 101", yourHealth);
-    //}     
 }
 
 //Display results for the round and health bar
@@ -188,28 +192,27 @@ function oppMoveA(id) {
 function damageStep(y, o) {
     if (y === "attack1" && o === "attack1") {
         result = "Both players took damage";
-        roundResults(result);
         if (oppHealth >=10 && yourHealth >= 10) {
             oppHealth -= 10;
             yourHealth -= 10;
-            console.log("line 178", oppHealth);
-            console.log("line 179", yourHealth);
+            console.log("line 202", oppHealth);
+            console.log("line 203", yourHealth);
         } else {
             oppHealth = 0;
             yourHealth = 0
         }
     } else if (y === "counter" && o === "attack1") {
         result = "Both players attempted to counter, counters failed";
-        roundResults(result);
         counter(y, o);
+        counter2(y, o);
     } else if ( y === "attack1" && o === "attack2") {
         result = "You strike your opponent with a Light Attack, but they strike back with a Medium Attack!";
-        roundResults(result);
         counter(y, o);
+        counter2(y, o);
     } else if (y === "attack1" && o === "attack3") {
         result = "You strike your opponent with a Light Attack, but they strike back with a Heavy Attack!";
-        roundResults(result);
         counter(y, o );
+        counter2(y, o);
     }
 }
 
@@ -219,8 +222,8 @@ function damageStep2(y, o) {
         if (oppHealth >=15 && yourHealth >= 15) {
             oppHealth -= 15;
             yourHealth -= 15;
-            console.log("line 201", oppHealth);
-            console.log("line 202", yourHealth);
+            console.log("line 229", oppHealth);
+            console.log("line 230", yourHealth);
         } else {
             oppHealth = 0;
             yourHealth = 0
@@ -228,12 +231,15 @@ function damageStep2(y, o) {
     } else if (y === "counter" && o === "attack2") {
         result = "Both players attempted to counter, counters failed";
         counter(y, o);
+        counter2(y, o);
     } else if ( y === "attack2" && o === "attack1") {
         result = "You strike your opponent with a Medium Attack, but they strike back with a Light Attack!";
         counter(y, o);
+        counter2(y, o);
     } else if (y === "attack2" && o === "attack3") {
         result = "You strike your opponent with a Medium Attack, but they strike back with a Heavy Attack!";
         counter(y, o );
+        counter2(y, o);
     } 
 }
 
@@ -244,8 +250,8 @@ function damageStep3(y, o) {
         if (oppHealth >=22 && yourHealth >= 22) {
             oppHealth -= 22;
             yourHealth -= 22;
-            console.log("line 201", oppHealth);
-            console.log("line 202", yourHealth);
+            console.log("line 257", oppHealth);
+            console.log("line 258", yourHealth);
         } else {
             oppHealth = 0;
             yourHealth = 0
@@ -253,12 +259,15 @@ function damageStep3(y, o) {
     } else if (y === "counter" && o === "attack3") {
         result = "Both players attempted to counter, counters failed";
         counter(y, o);
+        counter2(y, o);
     } else if ( y === "attack3" && o === "attack1") {
         result = "You strike your opponent with a Heavy Attack, but they strike back with a Light Attack!";
         counter(y, o);
+        counter2(y, o);
     } else if (y === "attack3" && o === "attack2") {
         result = "You strike your opponent with a Heavy Attack, but they strike back with a Medium Attack!";
         counter(y, o );
+        counter2(y, o);
     } 
 }
 window.onload=enableButtons();
