@@ -1,6 +1,4 @@
-* {
-    outline: 1px solid white;
-  }
+
   
   
   
@@ -30,6 +28,7 @@
   
   header, footer {
   flex-grow: 1;
+  border: 3px solid black;
   }
   
   aside {
@@ -38,7 +37,10 @@
   }
   
   main {
-    background-color: #14a6d3;
+    background-image: url("./assets/oceanbackground2.png");
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-color: #cccccc;
   flex-grow: 4;
   min-height: 60vh;
   }
@@ -58,7 +60,7 @@
 
  .button {
    padding: 16px;
-   
+   border: 2px solid black;
    min-width: 150px;
    display: inline-block;
    box-shadow: 0 9px rgb(102, 101, 101);
@@ -76,7 +78,7 @@
 	bottom: 635px;
 	right: 150px;
 	height: 25px;
-	
+	border: 3px black solid;
 	background: limegreen;
 }
 #yourHealthBar {
@@ -84,17 +86,25 @@
   bottom: 635px;
   left: 150px;
   height: 25px;
-  
+  border: 3px black solid;
   background: limegreen;
 }
 
 #announcements {
-	border: black 2px solid;
+	
   color: white;
 }
 
 #announcements span {
 	color: white;
   
+}
+
+.player, .opponent {
+  transform: scaleX(-1);
+  
+}
+img {
+  margin-top: 110px;
 }
 
