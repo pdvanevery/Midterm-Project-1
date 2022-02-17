@@ -88,6 +88,18 @@ function counter(y, o) {
             console.log("line 87", oppHealth);
         }
     }
+    else if (y === "counter") {
+        if (move >=3){
+            result = "Your counter was successful!";
+            oppHealth -=15;
+            console.log("line 94", oppHealth);
+        }
+        else {
+            result = "Your counter failed!";
+            yourHealth -= 12;
+            console.log("line 99", yourHealth);
+        }
+    }
 
     // if (move >= 6 && y === "counter") {
     //     result = "Your counter was succcessful! Opponent took 10 damage";
@@ -151,7 +163,7 @@ function gameOver() {
 function oppMoveA(id) {
     let moveC = 
     Math.floor((Math.random()*6)+1);
-    if (moveC <= 4) {
+    if (moveC >= 4) {
         savedOppMove = "attack1";
     } else if (moveC = 3)  {
         savedOppMove = "attack2";
@@ -160,11 +172,13 @@ function oppMoveA(id) {
     } else {
         savedOppMove = "counter";
     };
+    
 
     result = ("Your move is <span>" + id + "</span> and the computers move is <span>" + savedOppMove + "</span> on round " + totRounds);
     console.log(id, savedOppMove);
     damageStep(id, savedOppMove);
     damageStep2(id, savedOppMove);
+    damageStep3(id, savedOppMove);
     roundResults(result);
 
 }
@@ -174,6 +188,7 @@ function oppMoveA(id) {
 function damageStep(y, o) {
     if (y === "attack1" && o === "attack1") {
         result = "Both players took damage";
+        roundResults(result);
         if (oppHealth >=10 && yourHealth >= 10) {
             oppHealth -= 10;
             yourHealth -= 10;
@@ -183,13 +198,17 @@ function damageStep(y, o) {
             oppHealth = 0;
             yourHealth = 0
         }
-    } else if (y === "counter" && o === "counter") {
-        result = "Both players attempted to counter, counters failed";
-    } else if ( y === "attack1" && o === "attack2") {
-        result = "Opponent is ready to counter";
-        counter(y, o);
     } else if (y === "counter" && o === "attack1") {
-        result = "You are ready to counter";
+        result = "Both players attempted to counter, counters failed";
+        roundResults(result);
+        counter(y, o);
+    } else if ( y === "attack1" && o === "attack2") {
+        result = "You strike your opponent with a Light Attack, but they strike back with a Medium Attack!";
+        roundResults(result);
+        counter(y, o);
+    } else if (y === "attack1" && o === "attack3") {
+        result = "You strike your opponent with a Light Attack, but they strike back with a Heavy Attack!";
+        roundResults(result);
         counter(y, o );
     }
 }
@@ -206,15 +225,40 @@ function damageStep2(y, o) {
             oppHealth = 0;
             yourHealth = 0
         }
-    } else if (y === "counter" && o === "counter") {
-        result = "Both players attempted to counter, counters failed";
-    } else if ( y === "attack2" && o === "attack1") {
-        result = "Opponent is ready to counter";
-        counter(y, o);
     } else if (y === "counter" && o === "attack2") {
-        result = "You are ready to counter";
+        result = "Both players attempted to counter, counters failed";
+        counter(y, o);
+    } else if ( y === "attack2" && o === "attack1") {
+        result = "You strike your opponent with a Medium Attack, but they strike back with a Light Attack!";
+        counter(y, o);
+    } else if (y === "attack2" && o === "attack3") {
+        result = "You strike your opponent with a Medium Attack, but they strike back with a Heavy Attack!";
         counter(y, o );
     } 
 }
 
+
+function damageStep3(y, o) {
+    if (y === "attack3" && o === "attack3") {
+        result = "Both players took damage";
+        if (oppHealth >=22 && yourHealth >= 22) {
+            oppHealth -= 22;
+            yourHealth -= 22;
+            console.log("line 201", oppHealth);
+            console.log("line 202", yourHealth);
+        } else {
+            oppHealth = 0;
+            yourHealth = 0
+        }
+    } else if (y === "counter" && o === "attack3") {
+        result = "Both players attempted to counter, counters failed";
+        counter(y, o);
+    } else if ( y === "attack3" && o === "attack1") {
+        result = "You strike your opponent with a Heavy Attack, but they strike back with a Light Attack!";
+        counter(y, o);
+    } else if (y === "attack3" && o === "attack2") {
+        result = "You strike your opponent with a Heavy Attack, but they strike back with a Medium Attack!";
+        counter(y, o );
+    } 
+}
 window.onload=enableButtons();

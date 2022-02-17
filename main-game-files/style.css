@@ -72,7 +72,7 @@
  }
 
   #oppHealthBar {
-	position: absolute;
+
 	bottom: 635px;
 	right: 150px;
 	height: 10px;
@@ -80,7 +80,7 @@
 	background: limegreen;
 }
 #yourHealthBar {
-  position: absolute;
+  
   bottom: 635px;
   left: 150px;
   height: 10px;
