@@ -7,6 +7,7 @@ let savedOppMove;
 let yourHealth = 100;
 let oppHealth = 100;
 
+
 //turn counters
 let totRounds = 0;
 
@@ -44,6 +45,7 @@ function fight(e) {
     oppMoveA(e.target.id);
     healthChange();
     gameOver();
+    // console.log(yourHealth, oppHealth);
     
 }
 
@@ -60,50 +62,50 @@ function counter(y, o) {
         if (move >=6){
             result = "Your Light Attack missed!";
             // yourHealth -= 10;
-            console.log("line 58", yourHealth);
+            console.log("Player Health", yourHealth);
         } 
         else {
             result = "You strike your Opponent with a Light Attack for 12 DMG!";
             oppHealth -= 12;
-            console.log("line 63", oppHealth);
+            console.log("Opponent Health", oppHealth);
         } 
     } 
      else if (y === "attack2") {
         if (move >=5){
             result = "Your Medium Attack missed!";
             // yourHealth -= 15;
-            console.log("line 70", yourHealth);
+            console.log("Player Health", yourHealth);
         } 
         else {
             result = "You strike your Opponent with a Medium Attack for 17 DMG!";
             oppHealth -= 17;
-            console.log("line 75", oppHealth);
+            console.log("Opponent Health", oppHealth);
         }
     }
    else if (y === "attack3") {
         if (move >=4){
             result = "Your Heavy Attack missed!";
             // yourHealth -= 22;
-            console.log("line 82", yourHealth);
+            console.log("Player Health", yourHealth);
         }
         else {
             result = "You strike your Opponent with a Heavy Attack for 25 DMG!";
             oppHealth -= 25;
-            console.log("line 87", oppHealth);
+            console.log("Opponent Health", oppHealth);
         }
     }
     else if (y === "counter") {
         if (move >=3){
             result = "Your Counter failed!";
             yourHealth -=5;
-            console.log("line 98",yourHealth);
+            console.log("Player Health",yourHealth);
         }
         else {
             result = "Your Counter succeeded!";
             oppHealth -= 12;
            if (yourHealth <= 85) yourHealth += 15;
-            console.log("line 103", yourHealth);
-            console.log("line 102", oppHealth);
+            console.log("Player Health", yourHealth);
+            console.log("Opponent Health", oppHealth);
         }
     }
 
@@ -115,50 +117,50 @@ function counter2(y, o) {
         if (move >=6){
             result2 = "Opponent's Light Attack missed!";
             // oppHealth -= 10;
-            console.log(oppHealth);
+            console.log("Opponent Health", oppHealth);
         } 
         else {
             result2 = "Your Opponent lands a Light Attack for 12 DMG!";
             yourHealth -= 12;
-            console.log("line 121", yourHealth);
+            console.log("Player Health", yourHealth);
         } 
     } 
      else if (o === "attack2") {
         if (move >=5){
             result2 = "Opponent's Medium Attack missed!";
             // oppHealth -= 15;
-            console.log(oppHealth);
+            console.log("Opponent Health", oppHealth);
         } 
         else {
             result2 = "Your Opponent lands a Medium Attack for 17 DMG!"
             yourHealth -= 17;
-            console.log("line 133", yourHealth);
+            console.log("Player Health", yourHealth);
         }
     }
    else if (o === "attack3") {
         if (move >=4){
             result2 = "Opponent's Heavy Attack missed!";
             // oppHealth -= 22;
-            console.log("line 140", oppHealth);
+            console.log("Opponent Health", oppHealth);
         }
         else {
             result2 = "Your Opponent lands a Heavy Attack for 25 DMG!";
             yourHealth -= 25;
-            console.log("line 145", yourHealth);
+            console.log("Player Health", yourHealth);
         }
     }
     else if (o === "counter") {
         if (move >=3){
             result2 = "Your Opponent's Counter failed!";
             oppHealth -=5;
-            console.log("line 152",oppHealth);
+            console.log("Opponent Health",oppHealth);
         }
         else {
             result2 = "Your Opponent's Counter succeeded!";
             yourHealth -= 12;
            if (yourHealth <= 85) oppHealth += 15;
-            console.log("line 157", yourHealth);
-            console.log("line 158", oppHealth);
+            console.log("Player Health", yourHealth);
+            console.log("Opponent Health", oppHealth);
         }
     }
 
@@ -177,6 +179,11 @@ function healthChange() {
 //game over function
 function gameOver() {
     if (yourHealth <= 0) {
+        yourHealth -= 100;
+        yourHealthBar.style.width = 0;
+        if (oppHealth <= 0) {
+            oppHealth == 10;
+        }
         result = "You Lose!";
         roundResults(result);
         attackButtonL.disabled = true;
@@ -187,6 +194,11 @@ function gameOver() {
     }
     else {
         if (oppHealth <= 0) {
+            oppHealth -= 100;
+            oppHealthBar.style.width = 0;
+            if (yourHealth < 0) {
+                yourHealth == 10;
+            }
             result = "You Win!";
             roundResults(result);
         attackButtonL.disabled = true;
