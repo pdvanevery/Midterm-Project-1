@@ -44,6 +44,7 @@ function fight(e) {
     oppMoveA(e.target.id);
     healthChange();
     gameOver();
+    
 }
 
 //adds a round to the round counter
@@ -91,18 +92,20 @@ function counter(y, o) {
             console.log("line 87", oppHealth);
         }
     }
-    // else if (y === "counter") {
-    //     if (move >=3){
-    //         result = "Your counter was successful!";
-    //         oppHealth -=15;
-    //         console.log("line 94", oppHealth);
-    //     }
-    //     else {
-    //         result = "Your counter failed!";
-    //         yourHealth -= 12;
-    //         console.log("line 99", yourHealth);
-    //     }
-    // }
+    else if (y === "counter") {
+        if (move >=3){
+            result = "Your Counter failed!";
+            yourHealth -=5;
+            console.log("line 98",yourHealth);
+        }
+        else {
+            result = "Your Counter succeeded!";
+            oppHealth -= 12;
+           if (yourHealth <= 85) yourHealth += 15;
+            console.log("line 103", yourHealth);
+            console.log("line 102", oppHealth);
+        }
+    }
 
 }
 
@@ -112,36 +115,50 @@ function counter2(y, o) {
         if (move >=6){
             result2 = "Opponent's Light Attack missed!";
             // oppHealth -= 10;
-            console.log("line 111", oppHealth);
+            console.log(oppHealth);
         } 
         else {
             result2 = "Your Opponent lands a Light Attack for 12 DMG!";
             yourHealth -= 12;
-            console.log("line 116", yourHealth);
+            console.log("line 121", yourHealth);
         } 
     } 
      else if (o === "attack2") {
         if (move >=5){
             result2 = "Opponent's Medium Attack missed!";
             // oppHealth -= 15;
-            console.log("line 123", oppHealth);
+            console.log(oppHealth);
         } 
         else {
             result2 = "Your Opponent lands a Medium Attack for 17 DMG!"
             yourHealth -= 17;
-            console.log("line 128", yourHealth);
+            console.log("line 133", yourHealth);
         }
     }
    else if (o === "attack3") {
         if (move >=4){
             result2 = "Opponent's Heavy Attack missed!";
-            oppHealth -= 22;
-            console.log("line 135", oppHealth);
+            // oppHealth -= 22;
+            console.log("line 140", oppHealth);
         }
         else {
             result2 = "Your Opponent lands a Heavy Attack for 25 DMG!";
             yourHealth -= 25;
-            console.log("line 140", yourHealth);
+            console.log("line 145", yourHealth);
+        }
+    }
+    else if (o === "counter") {
+        if (move >=3){
+            result2 = "Your Opponent's Counter failed!";
+            oppHealth -=5;
+            console.log("line 152",oppHealth);
+        }
+        else {
+            result2 = "Your Opponent's Counter succeeded!";
+            yourHealth -= 12;
+           if (yourHealth <= 85) oppHealth += 15;
+            console.log("line 157", yourHealth);
+            console.log("line 158", oppHealth);
         }
     }
 
@@ -159,8 +176,8 @@ function healthChange() {
 
 //game over function
 function gameOver() {
-    if (yourHealth <= 0 || oppHealth <= 0) {
-        result = "Game Over!";
+    if (yourHealth <= 0) {
+        result = "You Lose!";
         roundResults(result);
         attackButtonL.disabled = true;
         attackButtonM.disabled = true;
@@ -168,7 +185,20 @@ function gameOver() {
         counterButton.disabled = true;
         playAgain.disabled = false;
     }
+    else {
+        if (oppHealth <= 0) {
+            result = "You Win!";
+            roundResults(result);
+        attackButtonL.disabled = true;
+        attackButtonM.disabled = true;
+        attackButtonH.disabled = true;
+        counterButton.disabled = true;
+        playAgain.disabled = false;
+        }
+    }
 }
+
+
 
 //Game mechanics
 
@@ -178,9 +208,9 @@ function oppMoveA(id) {
     Math.floor((Math.random()*6)+1);
     if (moveC >= 4) {
         savedOppMove = "attack1";
-    } else if (moveC = 3)  {
+    } else if (moveC == 3)  {
         savedOppMove = "attack2";
-    } else if (moveC = 2) {
+    } else if (moveC == 2) {
         savedOppMove = "attack3";
     } else {
         savedOppMove = "counter";
@@ -227,6 +257,11 @@ function damageStep(y, o) {
         counter(y, o );
         counter2(y, o);
     }
+    else if (y === "attack1" && o === "counter"){
+        
+        counter(y, o);
+        counter2(y, o);
+    }
 }
 
 function damageStep2(y, o) {
@@ -255,6 +290,11 @@ function damageStep2(y, o) {
         counter(y, o );
         counter2(y, o);
     } 
+    else if (y === "attack2" && o === "counter"){
+        
+        counter(y, o);
+        counter2(y, o);
+    }
 }
 
 
@@ -284,6 +324,11 @@ function damageStep3(y, o) {
         counter(y, o );
         counter2(y, o);
     } 
+    else if (y === "attack3" && o === "counter"){
+        
+        counter(y, o);
+        counter2(y, o);
+    }
 }
 
 function refreshPage() {
