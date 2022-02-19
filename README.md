@@ -1,5 +1,6 @@
 # Midterm-Project-1
-Midterm Project 1: Create a browser game
+Midterm Project 1: 
+
 GOAL OF GAME: 
 Get your opponent's health to 0 by clicking any of the 4 action buttons. 
 
