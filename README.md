@@ -16,3 +16,6 @@ Counter hits less than half of the time
 Counter can heal you if it succeeds, otherwise you will take a small amount of damage
 
 Once the game has been started, text will start to display, showing the outcome of your move and the outcome of your opponent's move
+
+
+https://pdvanevery.github.io/Midterm-Project-1/
